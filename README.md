@@ -1,7 +1,7 @@
-Usage: python3 live_doamin.py domains.txt
+**Usage: python3 live_doamin.py domains.txt**
 
-domains.txt will contain urls.
 <pre>
+#domains.txt file
 http://example.com
 https://example.com
 </pre>
