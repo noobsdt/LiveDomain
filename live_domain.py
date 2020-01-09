@@ -5,9 +5,17 @@ import sys
 import time
 import random
 import requests
+import argparse
 import multiprocessing
 
-    
+
+def parser():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("domains.txt", help="A file contains a list of urls.")
+    args = parser.parse_args()
+    print(args)
+
+
 def worker(input_queue):
     while True:
         url = input_queue.get()
@@ -16,7 +24,8 @@ def worker(input_queue):
         if url is None:
             break
         
-        header = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/    39.0.2171.95 Safari/537.36'}
+        header = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1)\
+                   AppleWebKit/537.36 (KHTML, like Gecko) Chrome/    39.0.2171.95 Safari/537.36'}
         
         codes = [200, 201, 202, 204, 301, 302, 307, 308, 401, 403, 500]
         try:
@@ -50,10 +59,8 @@ def master(filename):
         processes.append(p)
         p.start()
         
-        
     for url in urls:
         input_queue.put(url)
-        
         
     for ps in processes:
         ps.join()
@@ -61,12 +68,16 @@ def master(filename):
 
 if __name__ == '__main__':
     
+    parser()
+    
     if len(sys.argv) == 2:
         f = sys.argv[1]
         if os.path.exists(f):
             master(f)
         else:
             print(f'{f} does not exist!')
+            sys.exit(0)
     else:
         print('Usage: python3 ' + sys.argv[0] + ' domains.txt')
-     
+        sys.exit(0)
+  
