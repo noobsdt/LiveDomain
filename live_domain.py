@@ -13,8 +13,7 @@ def parser():
     parser = argparse.ArgumentParser()
     parser.add_argument("domains.txt", help="A file contains a list of urls.")
     args = parser.parse_args()
-    print(args)
-
+    return args
 
 def worker(input_queue):
     while True:
@@ -80,4 +79,3 @@ if __name__ == '__main__':
     else:
         print('Usage: python3 ' + sys.argv[0] + ' domains.txt')
         sys.exit(0)
-  
