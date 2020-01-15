@@ -66,9 +66,8 @@ def master(filename):
 
 
 if __name__ == '__main__':
-    
     parser()
-    
+
     if len(sys.argv) == 2:
         f = sys.argv[1]
         if os.path.exists(f):
