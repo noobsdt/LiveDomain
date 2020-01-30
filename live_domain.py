@@ -10,7 +10,7 @@ import multiprocessing
 
 def parser():
     parser = argparse.ArgumentParser()
-    parser.add_argument("domains.txt", help="A file contains a list of urls.", required=True)
+    parser.add_argument("domains.txt", help="A file contains a list of urls.")
     args = parser.parse_args()
     return args
 
