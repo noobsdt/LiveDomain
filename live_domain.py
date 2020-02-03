@@ -29,7 +29,7 @@ def worker(input_queue):
         header = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1)\
                    AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'}
         
-        codes = [200, 201, 202, 204, 301, 302, 307, 308, 401, 403, 500]
+        codes = [200, 201, 202, 204, 301, 302, 307, 308, 401, 403]
         try:
             r = requests.get(u, headers=header, allow_redirects=False, timeout=10)
             c = r.status_code
